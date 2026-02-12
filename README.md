@@ -2,7 +2,7 @@
 
 ## Podcast
 
-<video src="https://github.com/user-attachments/assets/fbedea23-f6ce-4887-b18c-79f555e5c5f1" width="300" height="10"></video>
+<video src="https://github.com/user-attachments/assets/fbedea23-f6ce-4887-b18c-79f555e5c5f1" width="1" height="1"></video>
 
 ## Overview
 
