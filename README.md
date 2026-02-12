@@ -6,7 +6,7 @@ The ICML 2026 Repository of The Project TensorCommitments: A Lightweight Verifia
 
 ![assets/podcast_tensorcommitments_ICML.mp3](assets/podcast_tensorcommitments_ICML.mp3)
 
-<video src="https://github.com/user-attachments/assets/podcast_tensorcommitments_ICML.mp4"></video>
+<video src="https://github.com/user-attachments/assets/podcast_tensorcommitments_ICML.mp4"  width="352" height="720">Your browser does not support the video element.</video>
 
 <audio controls>
     <source src="assets/podcast_tensorcommitments_ICML.mp3" type="audio/mp3">
