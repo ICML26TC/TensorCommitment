@@ -66,6 +66,8 @@ experiments/
 │   ├── run_scalability_benchmarks.py
 │   ├── plot_scalability.py
 │   └── results/
+|── layer_analysis_experiments
+|── scalability_experiments
 ├── generate_budget_cases.py     # Step 1: sample budget cases
 ├── extract_weight_norms.py      # Step 2: extract L1/L2/L∞ norms
 ├── run_experiment_benchmarks.py # Step 3: run all methods on cases
@@ -101,7 +103,23 @@ python scalability_experiments/plot_scalability.py --results results --output re
 
 
 ```bash
+cd layer_analysis_experiments
+./run_layer_analysis.sh
+```
 
+```bash
+cd experiments
+
+# Run all benchmarks (Terkle, Verkle, Merkle)
+python run_all_sweeps.py --plot
+
+# Or run individual sweeps
+python sweep_terkle.py
+python sweep_verkle.py
+python sweep_merkle.py
+
+# Generate plot from existing results
+python plot_dimension_benchmark.py
 ```
 
 ### Single model (full pipeline)

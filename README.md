@@ -35,10 +35,65 @@ finalcode/
 ├── tensorCommitmentLib/         # Steps 5-6: commit, prove, verify
 │   └── commit_prove_verify.py   #   Tensor commitment + proof generation
 └── pst_commitment_lib/          # Rust cryptographic library (self-contained)
-    ├── src/                     #   TensorCommitment implementations
-    ├── poly_interp_demo/        #   N-D interpolation binary (Rust)
-    ├── Cargo.toml               #   Rust crate config (theseus)
-    └── build_python.sh          #   Builds tensorcommitments Python module
+│     ├── src/                     #   TensorCommitment implementations
+│     ├── poly_interp_demo/        #   N-D interpolation binary (Rust)
+│     ├── Cargo.toml               #   Rust crate config (theseus)
+│     └── build_python.sh          #   Builds tensorcommitments Python module
+├── terkleLib/              # Terkle tree Rust library (depends on tensorCommitmentLib)
+│   ├── Cargo.toml          # Package: terkle
+│   ├── pyproject.toml      # Python module: terkle
+│   └── src/
+│       ├── lib.rs          # Core MultiverkleTree implementation
+│       ├── python.rs       # Python bindings
+│       └── bin/
+│           └── benchmark_dimensions.rs  # Benchmark binary
+│
+├── CleanPegasus/           # Verkle tree implementation (univariate KZG)
+│   ├── verkle-tree/        # Rust library
+│   │   └── pointproofs/    # KZG commitment implementation
+│   └── bindings/python/    # Python bindings and demos
+│       └── demo/
+│           ├── sweep_simulations.py
+│           └── new_verkle_demo_metrics.py
+│
+├── merkle/                 # Multi-branch Merkle tree (SHA-256)
+│   ├── Cargo.toml
+│   ├── src/
+│   │   ├── lib.rs          # MultiMerkleTree implementation
+│   │   └── python.rs       # Python bindings
+│   └── python_demo/
+│       └── final_prover_verifier/
+│           └── run_demo.py
+│
+└── experiments/            # Experiment scripts and results
+    ├── run_all_sweeps.py   # Master orchestration script
+    ├── sweep_terkle.py     # Terkle benchmark sweep
+    ├── sweep_verkle.py     # Verkle benchmark sweep
+    ├── sweep_merkle.py     # Merkle benchmark sweep
+    ├── plot_dimension_benchmark.py  # Plotting script
+    └── results/            # Output directory
+    │    ├── dimension_benchmark.jsonl
+    │    └── dimension_benchmark_plot.png
+    │    ├── weight_norms/                # Per-model weight norms (generated)
+    │    └── {model_short}_norms.json
+    │    ├── case_*_results.json
+    │    ├── {model_short}_all_results.json
+    │    ├── {model_short}_comparison.png
+    │    └── combined_comparison.png  # When running all models
+    ├── scalability/                 # Scalability experiments
+    │    ├── run_scalability_benchmarks.py
+    │    ├── plot_scalability.py
+    │    └── results/
+    |── layer_analysis_experiments
+    |── scalability_experiments
+    ├── generate_budget_cases.py     # Step 1: sample budget cases
+    ├── extract_weight_norms.py      # Step 2: extract L1/L2/L∞ norms
+    ├── run_experiment_benchmarks.py # Step 3: run all methods on cases
+    ├── plot_results.py              # Step 4: boxplots and summary
+    ├── run_full_benchmark.py        # Single model: run steps 1–4
+    ├── run_all_models.py            # All models + combined plot
+    ├── test_benchmark.py            # Quick sanity check
+    └── model_utils.py               # Shared helpers
 ```
 
 `layerSelectionLib` is independent from the tensor commitment pipeline and can be used as a standalone module for layer scoring and selection.
@@ -1142,13 +1197,7 @@ To increase differentiation:
 
 ## ESD `.npy` Metric Files
 
-Precomputed files in `AlphaPruning/data/<model>/<metric>.npy` are 1D arrays of per-prunable-layer metrics.
-
-Typical meaning for `alpha_peak`:
-- Higher alpha -> better trained -> more prunable
-- Lower alpha -> less prunable -> more significant
-
-If metric files are missing, extraction scripts can compute them on the fly (can take minutes to an hour depending on model size).
+Precomputed files in `AlphaPruning/data/<model>/<metric>.npy` are 1D arrays of per-prunable-layer metrics. If metric files are missing, extraction scripts can compute them on the fly (can take minutes to an hour depending on model size).
 
 ## Block vs Layer Definitions
 
