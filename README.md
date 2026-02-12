@@ -4,6 +4,12 @@ The ICML 2026 Repository of The Project TensorCommitments: A Lightweight Verifia
 
 ![assets/podcast_tensorcommitments_ICML.mp4](assets/podcast_tensorcommitments_ICML.mp4)
 
+
+<audio controls>
+    <source src="assets/podcast_tensorcommitments_ICML.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+
 ## Overview
 
 ![assets/intro_overview_fig.png](assets/intro_overview_fig.png)
