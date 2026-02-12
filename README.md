@@ -2,7 +2,10 @@
 
 The ICML 2026 Repository of The Project TensorCommitments: A Lightweight Verifiable Inference for Language Models
 
-[podcast_tensorcommitments_ICML_13KB.mp3](https://github.com/user-attachments/files/25253979/podcast_tensorcommitments_ICML_13KB.mp3)
+
+
+https://github.com/user-attachments/assets/fbedea23-f6ce-4887-b18c-79f555e5c5f1
+
 
 
 ## Overview
